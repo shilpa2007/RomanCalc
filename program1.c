@@ -14,34 +14,74 @@ int main(void) {
 
 //string inp1 = "XLVM";	
  
-char num2[10] = "XLV";
-int a, inp_value2;
+char num2a[10];
+char num2b[10];
+char op='A';
+int a, inp_value2a, inp_value2b, final_result, opt;
 
-	
-//printf("value to be test: %s", num1);	
 
-	printf("Enter Roman numbers: ");
-	scanf("%s", num2);
-	printf("\n Values entered: %s",num2);
+
+	printf("Enter 2 Roman numbers: ");
+	printf("Enter Operation: '1' to add, '2' to subtract ");
+	scanf("%s", num2a);
+	scanf("%s", num2b);
+	scanf("%i", &opt);
+//	p[] = getch();
+
+    
+    
+	printf("\n Values entered: %s  & %s",num2a, num2b);
+	printf("\n Operation requested: %c",op);
  
-//a = int(num1[0]);
+//a=sizeof(num2a);
+//printf("\nlenght of str:  %i",a);
+
+    inp_value2a = RomanToNum(num2a);
+    inp_value2b = RomanToNum(num2b);
  
-
-a=sizeof(num2);
-printf("\nlenght of str:  %i",a);
-
-inp_value2 = RomanToNum(num2);
- 
-//printf("\n%c, %c, %c, %c,%c",num1[0],num1[1],num1[2],num1[3],num1[4]);
-printf("\n Converted : %i",inp_value2);
-
+    //printf("\n%c, %c, %c, %c,%c",num1[0],num1[1],num1[2],num1[3],num1[4]);
+    printf("\n Converted First: %i",inp_value2a);
+    printf("\n Converted Second: %i",inp_value2b);
+   // opt=2;
+    final_result=romcalc(inp_value2a,inp_value2b,opt);
+    printf("\n Final result: %i",final_result);
+    
+    
 	return 0;
 }
 
+//------------------------------
+
+int romcalc(int val2a, int val2b, int opint)
+{
+int cal_values;
+
+//	if ((oper == 'A') || (oper == 'a'))
+    if (opint == 1)
+    {
+        cal_values = val2a + val2b;
+        printf("\n addition: %i",cal_values);
+    }
+    else
+    {
+        if (opint == 2)    //    	if ((oper == 'S') || (oper == 's'))
+    	{
+        	cal_values = val2a - val2b;
+        	printf("\n subtraction: %i",cal_values);
+    	}
+    	else 
+        { 
+        	printf ("Invalid operation"); 
+        }
+    }
+    return cal_values;
+}
+
+//----------------------------------------------
 int RomanToNum(char num1[10])
 {
     
-printf("\n Number received: %s", num1);
+//printf("\n Number received: %s", num1);
 char inp_tk1, inp_tk2;
 int loop1, loop2, loop1_end;
 int chk, num_int, inp_arr[10];
@@ -49,7 +89,7 @@ int inp_value1 = 0;
 
 for (loop1=0; loop1<9; loop1++)
 {
-      printf("\n %i : %d",loop1,num1[loop1]);
+//      printf("\n %i : %d",loop1,num1[loop1]);
       chk = (int)num1[loop1];
       inp_tk1 = num1[loop1];
       if (chk == 0)
@@ -88,8 +128,8 @@ for (loop1=0; loop1<9; loop1++)
             }
        }
        inp_arr[loop1] = num_int;
-       printf("\n--------> %c ",inp_tk1);
-       printf("\n--------> %i ",num_int);
+//       printf("\n--------> %c ",inp_tk1);
+//       printf("\n--------> %i ",num_int);
 
 }
 
@@ -97,7 +137,7 @@ for (loop1=0; loop1<9; loop1++)
        {
            if(loop2 == (loop1_end-1))
               {
-                  printf("\n %i A--> %i >= %i",loop2, inp_arr[loop2-1],inp_arr[loop2]);
+//                  printf("\n %i A--> %i >= %i",loop2, inp_arr[loop2-1],inp_arr[loop2]);
                 inp_value1 = inp_value1 + inp_arr[loop2];
               }
            else
@@ -109,12 +149,12 @@ for (loop1=0; loop1<9; loop1++)
               
                if (inp_arr[loop2] < inp_arr[loop2+1])
                  {
-                     printf("\n %i A1--> %i >= %i",loop2, inp_arr[loop2-1],inp_arr[loop2]);
+//                     printf("\n %i A1--> %i >= %i",loop2, inp_arr[loop2-1],inp_arr[loop2]);
                   inp_value1 = inp_value1 - inp_arr[loop2];
                  }
                  else
                  {
-                     printf("\n %i A2--> %i >= %i",loop2, inp_arr[loop2-1],inp_arr[loop2]);
+//                     printf("\n %i A2--> %i >= %i",loop2, inp_arr[loop2-1],inp_arr[loop2]);
                      inp_value1 = inp_value1 + inp_arr[loop2];
                  }
                
@@ -125,7 +165,7 @@ for (loop1=0; loop1<9; loop1++)
           // if (inp_arr[loop2-1] < inp_arr[loop2])
           else
            {
-                printf("\n %i B--> %i < %i",loop2, inp_arr[loop2-1],inp_arr[loop2]);
+//                printf("\n %i B--> %i < %i",loop2, inp_arr[loop2-1],inp_arr[loop2]);
                 if (inp_arr[loop2] >= inp_arr[loop2+1])
                  {
                   inp_value1 = inp_value1 + inp_arr[loop2];
@@ -138,7 +178,7 @@ for (loop1=0; loop1<9; loop1++)
            }
               }
            
-           printf("\n :  %i",inp_value1);
+//           printf("\n :  %i",inp_value1);
             
        }
        if (inp_value1 < 0)
