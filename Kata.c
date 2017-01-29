@@ -8,30 +8,24 @@
 #define C 100
 #define D 500
 #define M 1000
-
-int main(void) {
-	// your code goes here
-
-//string inp1 = "XLVM";	
  
-char num2a[10];
+int main() {
+	// your code goes here
+	int num;
+	//--------------------------------ROMAN TO NUMBER
+	
+	char num2a[10];
 char num2b[10];
 char op='A';
 int a, inp_value2a, inp_value2b, final_result, opt;
-
-
-
 	printf("Enter 2 Roman numbers: ");
-	printf("Enter Operation: '1' to add, '2' to subtract ");
 	scanf("%s", num2a);
 	scanf("%s", num2b);
+	printf("\nEnter Operation: '1' to add, '2' to subtract ");
 	scanf("%i", &opt);
-//	p[] = getch();
 
-    
-    
-	printf("\n Values entered: %s  & %s",num2a, num2b);
-	printf("\n Operation requested: %c",op);
+//	printf("\n Values entered: %s  & %s",num2a, num2b);
+//	printf("\n Operation requested: %c",op);
  
 //a=sizeof(num2a);
 //printf("\nlenght of str:  %i",a);
@@ -44,11 +38,16 @@ int a, inp_value2a, inp_value2b, final_result, opt;
     printf("\n Converted Second: %i",inp_value2b);
    // opt=2;
     final_result=romcalc(inp_value2a,inp_value2b,opt);
-    printf("\n Final result: %i",final_result);
+   // printf("\n Final result: %i",final_result);
     
-    
+	
+	
+	//--------------------------------NUMBER TO ROMAN
+    NumToRoman(final_result);
+    printf("\n");
 	return 0;
 }
+
 
 //------------------------------
 
@@ -178,10 +177,25 @@ for (loop1=0; loop1<9; loop1++)
            }
               }
            
-//           printf("\n :  %i",inp_value1);
-            
+
        }
        if (inp_value1 < 0)
        {inp_value1 *-1;}
     return inp_value1;
+}
+
+
+ NumToRoman(int fnum){
+    int nums_con[] = {1000,900,500,400,100,90,50,40,10,9,5,4,1}; 
+    char * symbols[] = { "M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I" }; 
+    int dup,loop4 = 0; 
+    printf("\n Final result : ");
+    while (fnum){    
+        dup=fnum/nums_con[loop4];                  
+        while (dup--){      
+            printf("%s",symbols[loop4]); 
+        }
+        fnum%=nums_con[loop4];
+        loop4++;                     
+    }
 }
